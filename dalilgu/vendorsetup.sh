@@ -1,2 +1,2 @@
-add_lunch_combo cm_dalilgu-eng
+add_lunch_combo slim_dalilgu-eng
 

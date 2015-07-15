@@ -1,2 +1,2 @@
-add_lunch_combo cm_daliskt-eng
+add_lunch_combo slim_daliskt-eng
 
