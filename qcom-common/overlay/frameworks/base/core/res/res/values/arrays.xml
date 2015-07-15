@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-/*
 **
-** Copyright 2011, The Android Open Source Project
+** Copyright 2014, The CyanogenMod Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -17,11 +16,22 @@
 ** limitations under the License.
 */
 -->
+
 <resources>
-    <string-array name="keypress_vibration_durations" translatable="false">
-        <!-- Build condition,duration_in_milliseconds -->
-        <item>MANUFACTURER=qcom,5</item>
-        <!-- Default value for unknown device -->
-        <item>,5</item>
+
+    <!-- Defines the shutdown options shown in the reboot dialog. -->
+        <array name="shutdown_reboot_options" translatable="false">
+        <item>@string/reboot_reboot</item>
+        <item>@string/reboot_recovery</item>
+        <item>@string/reboot_download</item>
+    </array>
+
+    <!-- Do not translate. Defines the shutdown actions passed to the kernel.
+         The first item should be empty for regular reboot. -->
+        <string-array name="shutdown_reboot_actions" translatable="false">
+        <item></item>
+        <item>recovery</item>
+        <item>download</item>
     </string-array>
+
 </resources>

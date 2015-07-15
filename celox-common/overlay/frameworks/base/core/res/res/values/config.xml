@@ -97,30 +97,4 @@
     <!-- The restoring is handled by modem if it is true-->
     <bool name="skip_restoring_network_selection">true</bool>
 
-    <!-- Device supports LED flashlight -->
-    <!--<bool name="config_enableTorch">true</bool>-->
-
-    <!-- Doze Mode -->
-    <integer name="config_screenBrightnessDoze">1</integer>
-    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
-    <bool name="config_dozeAfterScreenOff">true</bool>
-
-    <!-- Configure wifi tcp buffersizes in the form:
-         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
-    <string name="config_wifi_tcp_buffers" translatable="false">4095,131072,196608,4096,16384,110208</string>
-    <!-- Configure mobile tcp buffer sizes in the form:
-         rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
-         If no value is found for the rat-name in use, the system default will be applied.
-    -->
-    <string-array name="config_mobile_tcp_buffers">
-        <item>lte:4094,87380,2560000,4096,16384,1220608</item>
-        <item>umts:4094,87380,196608,4096,16384,110208</item>
-        <item>hspa:4094,87380,704512,4096,16384,110208</item>
-        <item>hsupa:4094,87380,704512,4096,16384,110208</item>
-        <item>hsdpa:4094,87380,704512,4096,16384,110208</item>
-        <item>hspap:4092,87380,704512,4096,16384,262144</item>
-        <item>edge:4093,26280,35040,4096,16384,35040</item>
-        <item>gprs:4092,8760,11680,4096,8760,11680</item>
-        <item>evdo:4094,87380,262144,4096,16384,262144</item>
-    </string-array>
 </resources>
