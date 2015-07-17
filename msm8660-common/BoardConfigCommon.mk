@@ -113,7 +113,6 @@ BOARD_SEPOLICY_UNION += \
     file_contexts \
     healthd.te \
     init.te \
-    gamma_dev.te \
     genfs_contexts \
     hostapd.te \
     init_shell.te \
