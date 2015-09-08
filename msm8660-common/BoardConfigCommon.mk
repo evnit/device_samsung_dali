@@ -25,6 +25,11 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 # Architecture
 TARGET_CPU_VARIANT := scorpion
 
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  WITH_DEXPREOPT := true
+endif
+
 # Audio
 BOARD_HAVE_SAMSUNG_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
