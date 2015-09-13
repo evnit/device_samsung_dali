@@ -191,7 +191,7 @@ public class SamsungMSM8660RIL extends RIL implements CommandsInterface {
 
     @Override
     protected Object responseSignalStrength(Parcel p) {
-        int numInts = 12;
+        int numInts = 13;
         int response[];
 
         // Get raw data
@@ -204,9 +204,23 @@ public class SamsungMSM8660RIL extends RIL implements CommandsInterface {
         //cdma
         response[2] %= 256;
         response[4] %= 256;
-        response[7] &= 0xff;
 
-        return new SignalStrength(response[0], response[1], response[2], response[3], response[4], response[5], response[6], response[7], response[8], response[9], response[10], response[11], true);
+        // RIL_LTE_SignalStrength
+        if ((response[7] & 0xff) == 255 || response[7] == 99) {
+            // If LTE is not enabled, clear LTE results
+            // 7-11 must be -1 for GSM signal strength to be used (see
+            // frameworks/base/telephony/java/android/telephony/SignalStrength.java)
+            // make sure lte is disabled
+            response[7] = 99;
+            response[8] = SignalStrength.INVALID;
+            response[9] = SignalStrength.INVALID;
+            response[10] = SignalStrength.INVALID;
+            response[11] = SignalStrength.INVALID;
+        } else { // lte is gsm on samsung/qualcomm cdma stack
+            response[7] &= 0xff;
+        }
+
+        return new SignalStrength(response[0], response[1], response[2], response[3], response[4], response[5], response[6], response[7], response[8], response[9], response[10], response[11], (response[12] != 0));
 
     }
 
@@ -463,6 +477,17 @@ public class SamsungMSM8660RIL extends RIL implements CommandsInterface {
                response[3].equals("30")) {
                response[3] = "15";
            }
+
+        /* DANGER WILL ROBINSON
+         * In some cases from Vodaphone we are receiving a RAT of 102
+         * while in tunnels of the metro. Lets Assume that if we
+         * receive 102 we actually want a RAT of 2 for EDGE service */
+           if (response.length > 4 &&
+               response[0].equals("1") &&
+               response[3].equals("102")) {
+               response[3] = "2";
+           }
+
       }
       return responseVoiceDataRegistrationState(response);
    }
