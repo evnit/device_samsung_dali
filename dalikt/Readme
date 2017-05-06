@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+<project name="omnirom/android_bootable_recovery" path="bootable/recovery" remote="github" revision="android-5.1" />
+<project name="evnit/device_samsung_dali" path="device/samsung" remote="github" revision="cm-12.1" />
+<project name="evnit/vendor_samsung_dalikt" path="vendor/samsung" remote="github" revision="cm-12.1-gapps" />
+<project name="evnit/android_kernel_samsung_msm8660-common" path="kernel/samsung/msm8660-common" remote="github" revision="cm-12.1-lz4" />
+<project name="evnit/hardware_qcom_msm8660" path="hardware/qcom" remote="github" revision="cm-12.1" />
+</manifest>
